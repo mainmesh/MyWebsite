@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}{{ meta.name|default:"meshack@dev" }} — {{ meta.headline|default:"~/" }}{% endblock %}</title>
+  <meta name="description" content="{{ meta.bio_short|default:'Full-stack engineer building production web apps — and the human feedback loops that make AI systems worth trusting.' }}" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <script defer src="https://unpkg.com/htmx.org@1.9.12"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+</head>
+<body hx-boost="true">
+
+  <div class="bg-mesh" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <aside class="sidebar">
+    <div>
+      <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2.25rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+        <div style="width: 52px; height: 52px; border-radius: 14px; background: linear-gradient(135deg, var(--accent-lime), var(--accent-violet)); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; color: var(--bg-base); flex-shrink: 0; box-shadow: 0 8px 20px -6px rgba(182, 255, 26, 0.4);">
+          MM
+        </div>
+        <div>
+          <div style="font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; color: var(--text-primary); margin: 0 0 0.2rem;">Meshack Mbithi</div>
+          <div style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent-lime); text-transform: uppercase; letter-spacing: 0.15em; font-weight: 600;">Full-Stack Engineer</div>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 1.5rem; padding: 0.6rem 0.85rem; background: rgba(182, 255, 26, 0.05); border: 1px solid rgba(182, 255, 26, 0.18); border-radius: 8px; display: flex; align-items: center; gap: 0.5rem;">
+        <span class="status-dot"></span>
+        <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-primary); font-weight: 500;">Open to Remote Roles</span>
+      </div>
+
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="{% url 'cv_page' %}">CV / Resume</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="sidebar-footer">
+      <div class="social-links" style="margin-top: 0; margin-bottom: 1rem; flex-wrap: wrap;">
+        <a href="mailto:{{ meta.email|default:'meshackmbithi01@gmail.com' }}" aria-label="Email" title="Email">
+          <svg class="social-icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+        {% if meta.github_url %}<a href="{{ meta.github_url }}" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+          <svg class="social-icon" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        </a>{% endif %}
+        {% if meta.linkedin_url %}<a href="{{ meta.linkedin_url }}" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+          <svg class="social-icon" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>{% endif %}
+      </div>
+      <p class="muted">© {% now "Y" %} {{ meta.name|default:"Meshack Mbithi" }}</p>
+      <p class="muted">built with django · htmx · alpine</p>
+    </div>
+  </aside>
+
+  <button class="menu-toggle" aria-label="Menu" x-data="{ open: false }" @click="open = !open">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <div class="mobile-nav" x-show="open" x-transition @click.away="open = false">
+    <nav>
+      <a href="#services" @click="open = false">Services</a>
+      <a href="#work" @click="open = false">Work</a>
+      <a href="#skills" @click="open = false">Skills</a>
+      <a href="#experience" @click="open = false">Experience</a>
+      <a href="{% url 'cv_page' %}" @click="open = false">CV / Resume</a>
+      <a href="#contact" @click="open = false">Contact</a>
+    </nav>
+  </div>
+
+  <main id="content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <span>© {% now "Y" %} {{ meta.name|default:"Meshack Mbithi" }}</span>
+    <span class="muted">built with django · htmx · alpine</span>
+    <div class="site-footer-socials">
+      <a href="mailto:{{ meta.email|default:'meshackmbithi01@gmail.com' }}" aria-label="Email" title="Email">
+        <svg class="social-icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </a>
+      {% if meta.github_url %}<a href="{{ meta.github_url }}" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+        <svg class="social-icon" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+      </a>{% endif %}
+      {% if meta.linkedin_url %}<a href="{{ meta.linkedin_url }}" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+        <svg class="social-icon" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>{% endif %}
+      {% if meta.whatsapp_url %}<a href="{{ meta.whatsapp_url }}" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
+        <svg class="social-icon" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+      </a>{% endif %}
+    </div>
+  </footer>
+
+  <script src="{% static 'js/site.js' %}" defer></script>
+</body>
+</html>

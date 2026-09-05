@@ -1,0 +1,610 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="terminal"
+       x-data="{
+         lines: [],
+         done: false,
+         queue: [
+           '> initializing meshack.dev...',
+           '> role: full-stack engineer · ai quality specialist',
+           '> focus: shipping web apps + training the models behind them',
+           '> location: nairobi, ke · gmt+3 · remote-native',
+           '> status: open to contract & full-time remote roles'
+         ],
+         init() {
+           let i = 0;
+           const tick = () => {
+             if (i < this.queue.length) {
+               this.lines.push(this.queue[i++]);
+               setTimeout(tick, 350);
+             } else {
+               this.done = true;
+             }
+           };
+           tick();
+         }
+       }"
+       x-init="init()">
+    <template x-for="(line, i) in lines" :key="i">
+      <span class="terminal-line" x-text="line"></span>
+    </template>
+    <span class="terminal-cursor" x-show="done"></span>
+  </div>
+  <div class="hero-grid">
+    <div>
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        <span>Open to Contract & Full-Time Remote Roles</span>
+      </div>
+
+  <div class="cta-row" x-data x-show="done" x-transition.opacity.duration.500ms>
+    <a href="#work" class="btn btn-primary">View Selected Work →</a>
+    <a href="mailto:{{ meta.email|default:'meshackmbithi01@gmail.com' }}" class="btn">Hire Me</a>
+      <h1 class="hero-title">
+        Building <span class="gradient-text">production web apps</span> & reliable AI systems.
+      </h1>
+
+      <p class="hero-subtitle">
+        Full-stack engineer specializing in Django, JavaScript, and AI quality evaluation. I turn complex requirements into clean, scalable software and human feedback loops.
+      </p>
+
+      <div class="tech-pills-row">
+        <span class="tech-pill">⚡ Python / Django</span>
+        <span class="tech-pill">🚀 JavaScript / Alpine</span>
+        <span class="tech-pill">🌐 HTMX</span>
+        <span class="tech-pill">🤖 AI Quality & Data Eval</span>
+        <span class="tech-pill">🗄️ PostgreSQL / SQLite</span>
+      </div>
+
+      <div class="cta-row">
+        <a href="#work" class="btn btn-primary">
+          <span>View Selected Work</span>
+          <svg class="social-icon social-icon-sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="{% url 'cv_page' %}" class="btn">
+          <svg class="social-icon social-icon-sm" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>View Resume</span>
+        </a>
+        <a href="mailto:{{ meta.email|default:'meshackmbithi01@gmail.com' }}" class="btn">
+          <span>Get in Touch</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Interactive Terminal Widget -->
+    <div class="terminal"
+         x-data="{
+           lines: [],
+           done: false,
+           queue: [
+             '> initializing meshack.dev...',
+             '> role: full-stack engineer · ai quality specialist',
+             '> focus: shipping web apps + model training loops',
+             '> location: nairobi, ke · gmt+3 · remote-native',
+             '> status: ready to contribute to your engineering team'
+           ],
+           init() {
+             let i = 0;
+             const tick = () => {
+               if (i < this.queue.length) {
+                 this.lines.push(this.queue[i++]);
+                 setTimeout(tick, 320);
+               } else {
+                 this.done = true;
+               }
+             };
+             tick();
+           }
+         }"
+         x-init="init()">
+      <div class="terminal-header">
+        <span class="terminal-dot terminal-dot-red"></span>
+        <span class="terminal-dot terminal-dot-yellow"></span>
+        <span class="terminal-dot terminal-dot-green"></span>
+        <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); margin-left: 0.5rem;">meshack@dev:~</span>
+      </div>
+      <template x-for="(line, i) in lines" :key="i">
+        <span class="terminal-line" x-text="line"></span>
+      </template>
+      <span class="terminal-cursor" x-show="done"></span>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="section" data-reveal>
+  <p class="section-label">01 — Services</p>
+  <h2 class="section-title">What I do best.</h2>
+  <p class="section-label">01 — Core Services</p>
+  <h2 class="section-title">What I bring to your team.</h2>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-number">01</div>
+      <h3 class="service-title">Full-Stack Engineering</h3>
+      <p class="service-desc">Production-grade web apps with Django, htmx, and Alpine. Clean architecture, testable code, and interfaces that feel instant.</p>
+      <a href="#work" class="service-link">See work →</a>
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;">
+        <div class="service-number">01</div>
+        <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(182, 255, 26, 0.1); display: grid; place-items: center; color: var(--accent-lime);">
+          <svg class="social-icon" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+      </div>
+      <h3 class="service-title">Full-Stack Web Engineering</h3>
+      <p class="service-desc">Production-grade web apps built with Django, Python, JavaScript, and modern frontends. Clean architecture, security best practices, and fast page loads.</p>
+      <div class="tech-pills-row" style="margin-top: 1rem;">
+        <span class="tech-pill">Django</span>
+        <span class="tech-pill">REST APIs</span>
+        <span class="tech-pill">HTMX</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-number">02</div>
+      <h3 class="service-title">AI Quality & Integration</h3>
+      <p class="service-desc">Evaluations, prompt engineering, and human-in-the-loop systems that make AI products reliable and trustworthy in production.</p>
+      <a href="#work" class="service-link">See work →</a>
+
+    <div class="service-card" style="border-left-color: var(--accent-violet);">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;">
+        <div class="service-number" style="color: var(--accent-violet);">02</div>
+        <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(124, 58, 237, 0.15); display: grid; place-items: center; color: var(--accent-violet);">
+          <svg class="social-icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        </div>
+      </div>
+      <h3 class="service-title">AI Quality & Data Evaluation</h3>
+      <p class="service-desc">Rigorous evaluations, prompt engineering, and human-in-the-loop workflows to make generative AI outputs accurate, safe, and production-ready.</p>
+      <div class="tech-pills-row" style="margin-top: 1rem;">
+        <span class="tech-pill">Data Eval</span>
+        <span class="tech-pill">Prompt Tuning</span>
+        <span class="tech-pill">RLHF</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-number">03</div>
+      <h3 class="service-title">Technical Writing</h3>
+      <p class="service-desc">Docs, case studies, and developer narratives that turn complex systems into clear, shareable stories for users and stakeholders.</p>
+      <a href="#work" class="service-link">See work →</a>
+
+    <div class="service-card" style="border-left-color: var(--accent-amber);">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;">
+        <div class="service-number" style="color: var(--accent-amber);">03</div>
+        <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(255, 122, 26, 0.15); display: grid; place-items: center; color: var(--accent-amber);">
+          <svg class="social-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+      </div>
+      <h3 class="service-title">Technical Writing & System Docs</h3>
+      <p class="service-desc">Clear developer documentation, system design guides, and technical narratives that bridge the gap between engineers, product leads, and users.</p>
+      <div class="tech-pills-row" style="margin-top: 1rem;">
+        <span class="tech-pill">API Docs</span>
+        <span class="tech-pill">Architecture</span>
+        <span class="tech-pill">Case Studies</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Selected Work Section -->
+<section id="work" class="section" data-reveal>
+  <div class="section-header">
+    <div>
+      <p class="section-label">02 — Selected Work</p>
+      <h2 class="section-title">Things I've shipped.</h2>
+      <h2 class="section-title">Things I've built & shipped.</h2>
+    </div>
+  </div>
+
+  <div class="work-grid">
+    {% for project in projects %}
+      <a href="{{ project.get_absolute_url }}" class="work-card">
+        <div class="work-card-image">
+          {% if project.screenshot %}
+            <img src="{{ project.screenshot.url }}" alt="{{ project.title }}" />
+          {% else %}
+            <span>{{ project.title }} / mockup</span>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+              <svg class="social-icon social-icon-lg" viewBox="0 0 24 24" style="color: var(--accent-lime);"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-primary);">{{ project.title }}</span>
+              <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent-lime);">Click to View Case Study →</span>
+            </div>
+          {% endif %}
+        </div>
+        <div class="work-card-body">
+          <h3 class="work-card-title">{{ project.title }}</h3>
+          <p class="work-card-meta">{{ project.get_category_display|upper }} · {{ project.year }} · {{ project.stack }}</p>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem;">
+            <h3 class="work-card-title">{{ project.title }}</h3>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-amber); font-weight: 600;">{{ project.year }}</span>
+          </div>
+          <p class="work-card-meta" style="margin-bottom: 0.75rem;">{{ project.get_category_display|upper }}</p>
+          <div class="tech-pills-row">
+            <span class="tech-pill">{{ project.stack }}</span>
+          </div>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="process" class="section" data-reveal>
+  <p class="section-label">03 — The Process</p>
+  <h2 class="section-title">Your project, in 5 steps.</h2>
+<!-- Skills Section -->
+<section id="skills" class="section" data-reveal>
+  <p class="section-label">03 — Skills & Capabilities</p>
+  <h2 class="section-title">Technical toolkit.</h2>
+
+  <div class="process-list">
+    <div class="process-item">
+      <div class="process-step">01</div>
+      <div class="process-content">
+        <h3>Discovery</h3>
+        <p>We define the problem, users, and success metrics before writing a single line of code.</p>
+        <div class="process-meta">1–2 Days</div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 2.5rem;">
+    <div class="skill-card">
+      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+        <svg class="social-icon" viewBox="0 0 24 24" style="color: var(--accent-lime);"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        <h3 style="font-family: var(--font-display); font-size: 1.05rem; margin: 0; font-weight: 600;">Languages</h3>
+      </div>
+    </div>
+    <div class="process-item">
+      <div class="process-step">02</div>
+      <div class="process-content">
+        <h3>Concept & Strategy</h3>
+        <p>I map the architecture, data flow, and interaction model so the build phase is predictable.</p>
+        <div class="process-meta">3–5 Days</div>
+      <div class="tech-pills-row">
+        <span class="tech-pill">Python</span>
+        <span class="tech-pill">JavaScript (ES6+)</span>
+        <span class="tech-pill">HTML5</span>
+        <span class="tech-pill">CSS3</span>
+        <span class="tech-pill">SQL</span>
+      </div>
+    </div>
+    <div class="process-item">
+      <div class="process-step">03</div>
+      <div class="process-content">
+        <h3>Design & Prototype</h3>
+        <p>High-fidelity interfaces with motion and feedback loops, aligned to your brand and accessibility needs.</p>
+        <div class="process-meta">1 Week</div>
+
+    <div class="skill-card" style="border-top-color: var(--accent-violet);">
+      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+        <svg class="social-icon" viewBox="0 0 24 24" style="color: var(--accent-violet);"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <h3 style="font-family: var(--font-display); font-size: 1.05rem; margin: 0; font-weight: 600;">Frameworks & Web</h3>
+      </div>
+    </div>
+    <div class="process-item">
+      <div class="process-step">04</div>
+      <div class="process-content">
+        <h3>Development</h3>
+        <p>Modular, tested implementation with CI/CD, monitoring, and handoff docs your team can own.</p>
+        <div class="process-meta">2–4 Weeks</div>
+      <div class="tech-pills-row">
+        <span class="tech-pill">Django</span>
+        <span class="tech-pill">REST APIs</span>
+        <span class="tech-pill">HTMX</span>
+        <span class="tech-pill">Alpine.js</span>
+        <span class="tech-pill">React</span>
+      </div>
+    </div>
+    <div class="process-item">
+      <div class="process-step">05</div>
+      <div class="process-content">
+        <h3>Launch & Iterate</h3>
+        <p>Ship, measure, and refine. I stay involved through the first growth sprint to validate assumptions.</p>
+        <div class="process-meta">Ongoing</div>
+
+    <div class="skill-card" style="border-top-color: var(--accent-amber);">
+      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+        <svg class="social-icon" viewBox="0 0 24 24" style="color: var(--accent-amber);"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+        <h3 style="font-family: var(--font-display); font-size: 1.05rem; margin: 0; font-weight: 600;">Databases & Tools</h3>
+      </div>
+      <div class="tech-pills-row">
+        <span class="tech-pill">PostgreSQL</span>
+        <span class="tech-pill">SQLite</span>
+        <span class="tech-pill">MySQL</span>
+        <span class="tech-pill">Git / GitHub</span>
+        <span class="tech-pill">Postman</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials" class="section" data-reveal>
+  <p class="section-label">04 — Testimonials</p>
+  <h2 class="section-title">Kind words from collaborators.</h2>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <p class="testimonial-text">"Shipped a full-stack platform on time and the codebase was cleaner than anything we inherited. Exactly the senior engineer we needed."</p>
+      <p class="testimonial-author"><strong>Sarah K.</strong> — CTO, NovaBridge</p>
+    </div>
+    <div class="testimonial-card">
+      <p class="testimonial-text">"Turned our messy AI evaluation pipeline into a reproducible workflow. The documentation alone saved us weeks of onboarding."</p>
+      <p class="testimonial-author"><strong>David M.</strong> — Product Lead, SemaUI</p>
+    </div>
+    <div class="testimonial-card">
+      <p class="testimonial-text">"Rare mix of engineering rigor and communication skill. He translated complex constraints into clear tradeoffs the whole team understood."</p>
+      <p class="testimonial-author"><strong>Andrea L.</strong> — Engineering Manager, Solaris</p>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="section" data-reveal>
+  <p class="section-label">Skills</p>
+  <h2 class="section-title">Technologies I work with.</h2>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2.5rem;">
+    <div class="skill-card">
+      <div class="service-number">Programming</div>
+      <p style="color: var(--text-muted); margin: 0;">Python, JavaScript, HTML5, CSS3, SQL</p>
+      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+        <svg class="social-icon" viewBox="0 0 24 24" style="color: var(--accent-lime);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <h3 style="font-family: var(--font-display); font-size: 1.05rem; margin: 0; font-weight: 600;">AI & Quality</h3>
+      </div>
+      <div class="tech-pills-row">
+        <span class="tech-pill">LLM Evaluation</span>
+        <span class="tech-pill">Prompt Engineering</span>
+        <span class="tech-pill">Data Annotation</span>
+        <span class="tech-pill">Model Benchmarking</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="service-number">Frameworks</div>
+      <p style="color: var(--text-muted); margin: 0;">Django, React, Flutter, REST APIs</p>
+    </div>
+    <div class="skill-card">
+      <div class="service-number">Databases</div>
+      <p style="color: var(--text-muted); margin: 0;">SQLite, MySQL, PostgreSQL</p>
+    </div>
+    <div class="skill-card">
+      <div class="service-number">Tools</div>
+      <p style="color: var(--text-muted); margin: 0;">Git, GitHub, VS Code, Android Studio, Postman</p>
+    </div>
+    <div class="skill-card">
+      <div class="service-number">Other</div>
+      <p style="color: var(--text-muted); margin: 0;">API Integration, Auth Systems, Responsive Design, Debugging</p>
+    </div>
+  </div>
+</section>
+
+<!-- Experience Section -->
+<section id="experience" class="section" data-reveal>
+  <p class="section-label">Experience</p>
+  <h2 class="section-title">Where I've contributed.</h2>
+  <p class="section-label">04 — Professional Experience</p>
+  <h2 class="section-title">Where I've delivered value.</h2>
+
+  <div style="margin-top: 2.5rem; display: grid; gap: 2rem;">
+    <div class="experience-card">
+      <div class="service-number">01</div>
+      <h3 class="service-title">Full-Stack Developer</h3>
+      <p class="service-desc">Freelance Projects, Remote</p>
+      <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
+        <div>
+          <h3 class="service-title" style="margin: 0;">Full-Stack Developer</h3>
+          <p class="service-desc" style="color: var(--accent-lime); font-family: var(--font-mono); font-size: 0.85rem;">Freelance / Remote</p>
+        </div>
+        <span class="tech-pill">Present</span>
+      </div>
+      <ul class="feature-list" style="margin-top: 1rem;">
+        <li>Design and develop responsive web applications using Python, Django, JavaScript, HTML, and CSS.</li>
+        <li>Build backend systems including authentication, user management, databases, dashboards, and business logic.</li>
+        <li>Develop database-driven applications and integrate APIs and third-party services.</li>
+        <li>Troubleshoot application errors, dependency issues, deployment problems, and frontend/backend integration challenges.</li>
+        <li>Implement responsive interfaces focused on usability and modern web design.</li>
+        <li>Use Git and GitHub for source control and project management.</li>
+        <li>Deploy and maintain web applications using modern hosting and deployment platforms.</li>
+        <li>Architect and deploy production-ready web applications using Django, Python, JavaScript, HTML, and CSS.</li>
+        <li>Build robust backend logic: authentication systems, relational database models, user roles, and RESTful endpoints.</li>
+        <li>Integrate modern interactive frontends using HTMX and Alpine.js for seamless single-page user interactions without heavy JS bundles.</li>
+        <li>Manage git workflows, CI/CD setup, error diagnostics, and hosting deployments.</li>
+      </ul>
+    </div>
+    <div class="experience-card">
+      <div class="service-number">02</div>
+      <h3 class="service-title">AI Training & Data Evaluation</h3>
+      <p class="service-desc">Freelance, Remote</p>
+
+    <div class="experience-card" style="border-left-color: var(--accent-violet);">
+      <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
+        <div>
+          <h3 class="service-title" style="margin: 0;">AI Training & Data Quality Specialist</h3>
+          <p class="service-desc" style="color: var(--accent-violet); font-family: var(--font-mono); font-size: 0.85rem;">Remote AI Platforms</p>
+        </div>
+        <span class="tech-pill">Freelance</span>
+      </div>
+      <ul class="feature-list" style="margin-top: 1rem;">
+        <li>Evaluate and improve AI-generated responses for accuracy, relevance, clarity, reasoning, and adherence to instructions.</li>
+        <li>Analyze technical and written content against detailed evaluation criteria and project guidelines.</li>
+        <li>Identify factual, logical, structural, and language-related issues in AI-generated outputs.</li>
+        <li>Provide structured feedback that helps improve the quality and reliability of AI systems.</li>
+        <li>Evaluate and refine complex AI model responses for factual accuracy, logical reasoning, code safety, and adherence to instructions.</li>
+        <li>Benchmark machine learning outputs against strict evaluation frameworks to train high-performing LLM models.</li>
+        <li>Provide actionable feedback to improve code synthesis, mathematical reasoning, and natural language understanding.</li>
+      </ul>
+    </div>
+    <div class="experience-card">
+      <div class="service-number">03</div>
+      <h3 class="service-title">Technical & Content Writer</h3>
+      <p class="service-desc">Freelance, Remote</p>
+
+    <div class="experience-card" style="border-left-color: var(--accent-amber);">
+      <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
+        <div>
+          <h3 class="service-title" style="margin: 0;">Technical & Content Writer</h3>
+          <p class="service-desc" style="color: var(--accent-amber); font-family: var(--font-mono); font-size: 0.85rem;">Remote</p>
+        </div>
+        <span class="tech-pill">Freelance</span>
+      </div>
+      <ul class="feature-list" style="margin-top: 1rem;">
+        <li>Produce clear, well-structured technical, educational, business, and digital content.</li>
+        <li>Research complex topics and transform technical information into accessible written material.</li>
+        <li>Edit and proofread content for grammar, structure, clarity, accuracy, and tone.</li>
+        <li>Create application essays, professional documents, business content, website copy, and educational materials.</li>
+        <li>Adapt writing style and depth to different audiences, instructions, and content requirements.</li>
+        <li>Maintain strong attention to detail while working independently and meeting deadlines.</li>
+        <li>Author structured technical documentation, system design overviews, developer guides, and educational materials.</li>
+        <li>Translate complex software engineering concepts into accessible, engaging documentation for clients and technical teams.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Education & Resume Banner -->
+<section id="education" class="section" data-reveal>
+  <p class="section-label">Education</p>
+  <h2 class="section-title">Academic background.</h2>
+
+  <div class="education-card" style="max-width: 640px; margin-top: 2.5rem;">
+    <div class="service-number">Bachelor of Business Information Technology</div>
+    <p class="service-title">Dedan Kimathi University of Technology</p>
+    <p class="service-desc">Expected Graduation: 2026</p>
+  </div>
+</section>
+
+<section id="strengths" class="section" data-reveal>
+  <p class="section-label">Core Strengths</p>
+  <h2 class="section-title">What I bring to the table.</h2>
+
+  <ul class="feature-list" style="margin-top: 2.5rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+    <li>Analytical & detail-oriented</li>
+    <li>Strong written & verbal communication</li>
+    <li>Fast learner, adaptable</li>
+    <li>Independent remote worker</li>
+    <li>Strong research & problem-solving</li>
+    <li>Reliable with deadlines</li>
+  </ul>
+</section>
+
+<section id="languages" class="section" data-reveal>
+  <p class="section-label">Languages</p>
+  <h2 class="section-title">Communication.</h2>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2.5rem;">
+    <div class="skill-card">
+      <p class="service-title">English</p>
+      <p class="service-desc">Professional Proficiency</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+    <div class="education-card">
+      <p class="section-label" style="color: var(--accent-violet);">Education</p>
+      <h3 style="font-family: var(--font-display); font-size: 1.3rem; margin: 0.5rem 0 0.25rem; font-weight: 700;">Bachelor of Business Information Technology</h3>
+      <p style="color: var(--text-muted); margin: 0 0 0.5rem;">Dedan Kimathi University of Technology</p>
+      <span class="tech-pill">Expected Graduation: 2026</span>
+    </div>
+    <div class="skill-card">
+      <p class="service-title">Swahili</p>
+      <p class="service-desc">Professional Proficiency</p>
+    </div>
+  </div>
+</section>
+
+<section id="cv" class="section" data-reveal>
+  <div class="cv-section">
+    <p class="section-label">Resume</p>
+    <h2 class="section-title">Download my CV.</h2>
+    <p style="color: var(--text-muted); max-width: 640px; line-height: 1.7; margin: 1rem 0 2rem;">
+      Get the full picture: experience, skills, education, and projects in one document.
+    </p>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <a href="{% url 'cv_page' %}" class="btn btn-primary">View CV →</a>
+      <a href="{% url 'cv_download' %}" class="btn">Download PDF →</a>
+    <div class="cv-section">
+      <p class="section-label">Resume</p>
+      <h3 style="font-family: var(--font-display); font-size: 1.3rem; margin: 0.5rem 0 0.5rem; font-weight: 700;">Download Complete Resume</h3>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.25rem;">Explore complete breakdown of experience, academic credentials, and project history.</p>
+      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+        <a href="{% url 'cv_page' %}" class="btn btn-primary">View Interactive Resume →</a>
+        <a href="{% url 'cv_download' %}" class="btn">PDF Download</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section" data-reveal>
+  <div class="about-section">
+    <p class="section-label">About</p>
+    <h2 class="section-title">A website that leaves a lasting impression.</h2>
+    <p style="color: var(--text-muted); max-width: 640px; line-height: 1.7; margin: 0 0 1.5rem;">
+      I'm Meshack Mbithi, a full-stack engineer and AI quality specialist based in Nairobi. I build production web apps and the feedback systems that make AI trustworthy in the real world.
+    </p>
+    <p style="color: var(--text-muted); max-width: 640px; line-height: 1.7; margin: 0 0 2rem;">
+      Currently open to contract and full-time remote roles. If you need someone who cares about craft, clarity, and shipped software, let's talk.
+    </p>
+    <a href="mailto:{{ meta.email|default:'meshackmbithi01@gmail.com' }}" class="btn btn-primary">Get in touch →</a>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="section" data-reveal>
+  <div class="contact-section">
+    <p class="section-label" style="justify-content: center;">Contact</p>
+    <h2 class="cta-title">Let's work together.</h2>
+    <p class="cta-subtitle">Open for remote, freelance, and contract roles. If you need someone who ships clean software and clear writing, reach out.</p>
+    <p class="section-label" style="justify-content: center;">Contact & Hiring</p>
+    <h2 class="cta-title">Let's build something extraordinary together.</h2>
+    <p class="cta-subtitle">Currently available for remote full-stack roles, AI evaluation contracts, and custom web development projects.</p>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 2rem;">
+      <a href="mailto:{{ meta.email|default:'meshackmbithi01@gmail.com' }}" class="hero-cta hero-cta-primary">Email Me →</a>
+      {% if meta.github_url %}<a href="{{ meta.github_url }}" target="_blank" rel="noopener" class="hero-cta">GitHub →</a>{% endif %}
+      {% if meta.linkedin_url %}<a href="{{ meta.linkedin_url }}" target="_blank" rel="noopener" class="hero-cta">LinkedIn →</a>{% endif %}
+      {% if meta.facebook_url %}<a href="{{ meta.facebook_url }}" target="_blank" rel="noopener" class="hero-cta">Facebook →</a>{% endif %}
+      {% if meta.instagram_url %}<a href="{{ meta.instagram_url }}" target="_blank" rel="noopener" class="hero-cta">Instagram →</a>{% endif %}
+      {% if meta.whatsapp_url %}<a href="{{ meta.whatsapp_url }}" target="_blank" rel="noopener" class="hero-cta">WhatsApp →</a>{% endif %}
+      {% if meta.twitter_url %}<a href="{{ meta.twitter_url }}" target="_blank" rel="noopener" class="hero-cta">Twitter →</a>{% endif %}
+      <a href="mailto:{{ meta.email|default:'meshackmbithi01@gmail.com' }}" class="hero-cta hero-cta-primary">
+        <svg class="social-icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>Email Meshack →</span>
+      </a>
+      {% if meta.github_url %}
+      <a href="{{ meta.github_url }}" target="_blank" rel="noopener" class="hero-cta">
+        <svg class="social-icon" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        <span>GitHub Profile</span>
+      </a>
+      {% endif %}
+      {% if meta.linkedin_url %}
+      <a href="{{ meta.linkedin_url }}" target="_blank" rel="noopener" class="hero-cta">
+        <svg class="social-icon" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        <span>LinkedIn Profile</span>
+      </a>
+      {% endif %}
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-bottom: 1.5rem;">
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <a href="mailto:{{ meta.email|default:'meshackmbithi01@gmail.com' }}" style="color: var(--text-primary); text-decoration: none;">{{ meta.email|default:'meshackmbithi01@gmail.com' }}</a>
+      <div style="display: flex; align-items: center; gap: 0.5rem; background: rgba(17, 20, 27, 0.7); padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid var(--border);">
+        <svg class="social-icon" viewBox="0 0 24 24" style="color: var(--accent-lime);"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <a href="mailto:{{ meta.email|default:'meshackmbithi01@gmail.com' }}" style="color: var(--text-primary); font-family: var(--font-mono); font-size: 0.85rem; text-decoration: none;">{{ meta.email|default:'meshackmbithi01@gmail.com' }}</a>
+      </div>
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        <span style="color: var(--text-primary);">{{ meta.phone|default:'0794913356' }}</span>
+      <div style="display: flex; align-items: center; gap: 0.5rem; background: rgba(17, 20, 27, 0.7); padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid var(--border);">
+        <svg class="social-icon" viewBox="0 0 24 24" style="color: var(--accent-lime);"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        <span style="color: var(--text-primary); font-family: var(--font-mono); font-size: 0.85rem;">{{ meta.phone|default:'0794913356' }}</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span style="color: var(--text-primary);">{{ meta.location|default:'Kenya' }}</span>
+      <div style="display: flex; align-items: center; gap: 0.5rem; background: rgba(17, 20, 27, 0.7); padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid var(--border);">
+        <svg class="social-icon" viewBox="0 0 24 24" style="color: var(--accent-lime);"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span style="color: var(--text-primary); font-family: var(--font-mono); font-size: 0.85rem;">{{ meta.location|default:'Nairobi, Kenya (GMT+3)' }}</span>
+      </div>
+    </div>
+
+    <p style="color: var(--text-muted); font-family: var(--font-mono); font-size: 0.8rem; margin: 0;">
+      Work preference: Remote / Freelance / Contract
+    </p>
+  </div>
+</section>
+
+{% endblock %}

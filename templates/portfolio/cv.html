@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="section">
+  <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+    <div>
+      <p class="section-label">CV</p>
+      <p class="section-label">Curriculum Vitae</p>
+      <h1 class="section-title" style="margin: 0;">Meshack Mbithi</h1>
+      <p style="color: var(--text-muted); margin: 0.5rem 0 0;">Full-Stack Developer · AI Training Specialist · Technical & Content Writer</p>
+      <p style="color: var(--text-muted); margin: 0.5rem 0 0;">Full-Stack Engineer · AI Quality Specialist · Technical Writer</p>
+    </div>
+    <a href="{% url 'cv_download' %}" class="btn btn-primary">Download PDF →</a>
+    <div style="display: flex; gap: 0.75rem;">
+      <a href="{% url 'home' %}" class="btn">← Back to Home</a>
+      <a href="{% url 'cv_download' %}" class="btn btn-primary">
+        <svg class="social-icon social-icon-sm" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>Download PDF</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="case-study">
+    <div class="case-block">
+      <h3>Professional Summary</h3>
+      <p>Versatile Full-Stack Developer and AI Training Specialist with hands-on experience building web applications, developing digital solutions, evaluating AI-generated content, and producing high-quality technical and academic content. Strong foundation in Python, Django, JavaScript, React, HTML, CSS, databases, and software development workflows.</p>
+      <p>Experienced in working with AI-focused platforms and projects involving data evaluation, content quality, software development, and structured problem-solving. Combines technical expertise with strong written communication, research, analytical thinking, and attention to detail. Currently completing a Bachelor of Business Information Technology, with a strong interest in full-stack development, artificial intelligence, data, automation, and emerging technology.</p>
+    </div>
+
+    <div class="case-block">
+      <h3>Technical Skills</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 0.75rem;">
+        <div>
+          <p style="font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.2em; color: var(--accent-lime); text-transform: uppercase; margin: 0 0 0.5rem;">Programming</p>
+          <p style="margin: 0; color: var(--text-muted);">Python, JavaScript, HTML5, CSS3, SQL</p>
+        </div>
+        <div>
+          <p style="font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.2em; color: var(--accent-lime); text-transform: uppercase; margin: 0 0 0.5rem;">Frameworks</p>
+          <p style="margin: 0; color: var(--text-muted);">Django, React, Flutter, REST APIs</p>
+        </div>
+        <div>
+          <p style="font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.2em; color: var(--accent-lime); text-transform: uppercase; margin: 0 0 0.5rem;">Databases</p>
+          <p style="margin: 0; color: var(--text-muted);">SQLite, MySQL, PostgreSQL</p>
+        </div>
+        <div>
+          <p style="font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.2em; color: var(--accent-lime); text-transform: uppercase; margin: 0 0 0.5rem;">Tools</p>
+          <p style="margin: 0; color: var(--text-muted);">Git, GitHub, VS Code, Android Studio, Postman</p>
+        </div>
+        <div>
+          <p style="font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.2em; color: var(--accent-lime); text-transform: uppercase; margin: 0 0 0.5rem;">Other</p>
+          <p style="margin: 0; color: var(--text-muted);">API Integration, Auth Systems, Responsive Design, Debugging</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-block">
+      <h3>Professional Experience</h3>
+      <div style="margin-top: 1rem; display: grid; gap: 1.5rem;">
+        <div>
+          <p style="font-family: var(--font-display); font-size: 1rem; font-weight: 600; margin: 0 0 0.25rem;">Full-Stack Developer</p>
+          <p style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin: 0 0 0.5rem;">Freelance Projects, Remote</p>
+          <ul class="feature-list">
+            <li>Design and develop responsive web applications using Python, Django, JavaScript, HTML, and CSS.</li>
+            <li>Build backend systems including authentication, user management, databases, dashboards, and business logic.</li>
+            <li>Develop database-driven applications and integrate APIs and third-party services.</li>
+            <li>Troubleshoot application errors, dependency issues, deployment problems, and frontend/backend integration challenges.</li>
+            <li>Implement responsive interfaces focused on usability and modern web design.</li>
+            <li>Use Git and GitHub for source control and project management.</li>
+            <li>Deploy and maintain web applications using modern hosting and deployment platforms.</li>
+          </ul>
+        </div>
+        <div>
+          <p style="font-family: var(--font-display); font-size: 1rem; font-weight: 600; margin: 0 0 0.25rem;">AI Training & Data Evaluation</p>
+          <p style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin: 0 0 0.5rem;">Freelance, Remote</p>
+          <ul class="feature-list">
+            <li>Evaluate and improve AI-generated responses for accuracy, relevance, clarity, reasoning, and adherence to instructions.</li>
+            <li>Analyze technical and written content against detailed evaluation criteria and project guidelines.</li>
+            <li>Identify factual, logical, structural, and language-related issues in AI-generated outputs.</li>
+            <li>Provide structured feedback that helps improve the quality and reliability of AI systems.</li>
+          </ul>
+        </div>
+        <div>
+          <p style="font-family: var(--font-display); font-size: 1rem; font-weight: 600; margin: 0 0 0.25rem;">Technical & Content Writer</p>
+          <p style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin: 0 0 0.5rem;">Freelance, Remote</p>
+          <ul class="feature-list">
+            <li>Produce clear, well-structured technical, educational, business, and digital content.</li>
+            <li>Research complex topics and transform technical information into accessible written material.</li>
+            <li>Edit and proofread content for grammar, structure, clarity, accuracy, and tone.</li>
+            <li>Create application essays, professional documents, business content, website copy, and educational materials.</li>
+            <li>Adapt writing style and depth to different audiences, instructions, and content requirements.</li>
+            <li>Maintain strong attention to detail while working independently and meeting deadlines.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-block">
+      <h3>Selected Projects</h3>
+      <div style="margin-top: 1rem; display: grid; gap: 1.5rem;">
+        <div>
+          <p style="font-family: var(--font-display); font-size: 1rem; font-weight: 600; margin: 0 0 0.25rem;">Business & Investment Web Application</p>
+          <p style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin: 0 0 0.5rem;">Python · Django · HTML · CSS · JavaScript · Database</p>
+          <ul class="feature-list">
+            <li>Designed a concept for a database-driven investment platform.</li>
+            <li>Developed functionality for user registration, authentication, investment management, transactions, and administrative controls.</li>
+            <li>Implemented structured database models and business logic using Django.</li>
+            <li>Designed user and administrator dashboards.</li>
+          </ul>
+        </div>
+        <div>
+          <p style="font-family: var(--font-display); font-size: 1rem; font-weight: 600; margin: 0 0 0.25rem;">E-Commerce & Digital Business Platforms</p>
+          <p style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin: 0 0 0.5rem;">Django · JavaScript · HTML · CSS</p>
+          <ul class="feature-list">
+            <li>Developed concepts and interfaces for online businesses and e-commerce platforms.</li>
+            <li>Implemented product management, customer-facing interfaces, order workflows, and business information pages.</li>
+            <li>Focused on responsive design, usability, and conversion-oriented layouts.</li>
+          </ul>
+        </div>
+        <div>
+          <p style="font-family: var(--font-display); font-size: 1rem; font-weight: 600; margin: 0 0 0.25rem;">Academic & Digital Information Systems</p>
+          <p style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin: 0 0 0.5rem;">Web Development · Database Systems · Business IT</p>
+          <ul class="feature-list">
+            <li>Designed and developed information systems addressing real-world business and organizational requirements.</li>
+            <li>Applied software development principles including requirements analysis, database design, testing, and iterative development.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; margin-top: 2rem;">
+      <div class="case-block">
+        <h3>Education</h3>
+        <p style="font-family: var(--font-display); font-size: 1rem; font-weight: 600; margin: 0.5rem 0 0.25rem;">Bachelor of Business Information Technology</p>
+        <p style="margin: 0; color: var(--text-muted);">Dedan Kimathi University of Technology</p>
+        <p style="margin: 0.25rem 0 0; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted);">Expected Graduation: 2026</p>
+      </div>
+      <div class="case-block">
+        <h3>Languages</h3>
+        <p style="margin: 0.5rem 0 0.25rem; color: var(--text-primary);">English — Professional</p>
+        <p style="margin: 0; color: var(--text-primary);">Swahili — Professional</p>
+      </div>
+      <div class="case-block">
+        <h3>Work Preference</h3>
+        <p style="margin: 0.5rem 0 0; color: var(--text-muted);">Remote / Freelance / Contract</p>
+      </div>
+    </div>
+
+    <div class="case-block" style="margin-top: 2rem;">
+      <h3>Core Strengths</h3>
+      <ul class="feature-list" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+        <li>Analytical & detail-oriented</li>
+        <li>Strong written & verbal communication</li>
+        <li>Fast learner, adaptable</li>
+        <li>Independent remote worker</li>
+        <li>Strong research & problem-solving</li>
+        <li>Reliable with deadlines</li>
+      </ul>
+    </div>
+
+    <div class="case-block" style="margin-top: 2rem;">
+      <h3>Areas of Interest</h3>
+      <p style="color: var(--text-muted); margin: 0.5rem 0 0;">Artificial Intelligence · AI Training · Full-Stack Development · Data · Software Engineering · Automation · Technical Writing</p>
+    </div>
+  </div>
+</section>
+{% endblock %}

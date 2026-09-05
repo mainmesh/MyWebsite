@@ -1,0 +1,68 @@
+<article class="case-study" data-reveal>
+  <div class="case-grid">
+    <div class="mockup-frame">
+      {% if project.screenshot %}
+        <img src="{{ project.screenshot.url }}" alt="{{ project.title }} mockup" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+      {% else %}
+        <span>{{ project.title }} / mockup</span>
+      {% endif %}
+    </div>
+
+    <div>
+      <span class="case-index">{{ index|stringformat:"02d" }} / {{ project.get_category_display|upper }}</span>
+      <h3 class="case-title">{{ project.title }}</h3>
+      <p class="case-tagline">{{ project.tagline }}</p>
+
+      <dl class="case-meta">
+        <div class="meta-item">
+          <dt>Stack</dt>
+          <dd>{{ project.stack }}</dd>
+        </div>
+        <div class="meta-item">
+          <dt>Role</dt>
+          <dd>{{ project.role }}</dd>
+        </div>
+        <div class="meta-item">
+          <dt>Year</dt>
+          <dd>{{ project.year }}</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="case-block">
+    <h3>— The Problem</h3>
+    <p>{{ project.problem }}</p>
+  </div>
+
+  {% if project.features %}
+  <div class="case-block">
+    <h3>— What I Built</h3>
+    <ul class="feature-list">
+      {% for f in project.features %}<li>{{ f }}</li>{% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  {% if project.metrics %}
+  <div class="metrics">
+    {% for m in project.metrics %}
+      <div class="metric">
+        <div class="metric-value">
+          <span
+            x-data="{ n: 0, target: {{ m.value }} }"
+            x-init="let start = performance.now(); const tick = (t) => { const p = Math.min((t - start) / 1200, 1); n = Math.floor(p * target); if (p < 1) requestAnimationFrame(tick); }; requestAnimationFrame(tick);">
+            <span x-text="n"></span><span class="metric-suffix">{{ m.suffix }}</span>
+          </span>
+        </div>
+        <div class="metric-label">{{ m.label }}</div>
+      </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="cta-row" style="margin-top: 2rem;">
+    {% if project.github_url %}<a href="{{ project.github_url }}" class="btn" target="_blank" rel="noopener">View on GitHub →</a>{% endif %}
+    {% if project.live_url %}<a href="{{ project.live_url }}" class="btn" target="_blank" rel="noopener">Live Demo →</a>{% endif %}
+  </div>
+</article>

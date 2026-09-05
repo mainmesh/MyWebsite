@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ project.title }} — {{ meta.name|default:"meshack@dev" }}{% endblock %}
+
+{% block content %}
+<section class="section">
+  <a href="{% url 'home' %}" class="btn" style="margin-bottom: 2rem;">← back</a>
+  {% include "portfolio/partials/case_study.html" with project=project index=0 %}
+</section>
+{% endblock %}
