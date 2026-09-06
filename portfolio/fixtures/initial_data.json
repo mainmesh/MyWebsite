@@ -1,0 +1,23 @@
+[
+  {
+    "model": "portfolio.sitemeta",
+    "pk": 1,
+    "fields": {
+      "name": "Meshack Mbithi",
+      "headline": "Full-Stack Engineer · AI Quality Specialist",
+      "location": "Nairobi, KE · GMT+3",
+      "status": "Open to contract & full-time remote roles",
+      "email": "meshackmbithi01@gmail.com",
+      "phone": "0794913356",
+      "bio_short": "",
+      "cv": "",
+      "github_url": "https://github.com/mainmesh",
+      "linkedin_url": "https://www.linkedin.com/in/meshack-mbithi-54b9a422a",
+      "twitter_url": "",
+      "facebook_url": "https://web.facebook.com/MainMesh",
+      "instagram_url": "https://www.instagram.com/main_mesh/",
+      "whatsapp_url": "https://wa.me/254794913356",
+      "skills": []
+    }
+  }
+]

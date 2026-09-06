@@ -1,10 +1,14 @@
 from django.http import FileResponse, Http404
 from django.shortcuts import render, get_object_or_404
+from django.db import ProgrammingError
 from .models import Project, SiteMeta
 
 
 def _meta():
-    return SiteMeta.objects.first()
+    try:
+        return SiteMeta.objects.first()
+    except ProgrammingError:
+        return None
 
 
 def home(request):
