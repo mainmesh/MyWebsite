@@ -2,7 +2,9 @@
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 python manage.py collectstatic --noinput --settings=config.settings
-python manage.py migrate --noinput --settings=config.settings || true
+echo "Running migrations..."
+python manage.py migrate --settings=config.settings
+echo "Loading initial data..."
 python manage.py loaddata --settings=config.settings --ignorenonexistent portfolio/fixtures/initial_data.json || true
 
 if [ -d "staticfiles" ]; then

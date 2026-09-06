@@ -11,9 +11,16 @@ def _meta():
         return None
 
 
+def _projects():
+    try:
+        return list(Project.objects.filter(featured=True))
+    except ProgrammingError:
+        return []
+
+
 def home(request):
     meta = _meta()
-    projects = Project.objects.filter(featured=True)
+    projects = _projects()
     return render(request, "portfolio/home.html", {
         "meta": meta,
         "projects": projects,
@@ -21,7 +28,11 @@ def home(request):
 
 
 def case_study_detail(request, slug):
-    project = get_object_or_404(Project, slug=slug)
+    try:
+        project = Project.objects.get(slug=slug)
+    except (Project.DoesNotExist, ProgrammingError):
+        from django.http import Http404
+        raise Http404("Project not found")
     return render(request, "portfolio/case_study.html", {
         "meta": _meta(),
         "project": project,
