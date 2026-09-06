@@ -3,8 +3,8 @@ Django settings for meshack.dev personal portfolio.
 """
 import os
 from pathlib import Path
-from dotenv import load_dotenv
 from urllib.parse import urlparse, parse_qsl
+from dotenv import load_dotenv
 
 load_dotenv()
 
@@ -55,19 +55,27 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': tmpPostgres.path.replace('/', ''),
-        'USER': tmpPostgres.username,
-        'PASSWORD': tmpPostgres.password,
-        'HOST': tmpPostgres.hostname,
-        'PORT': 5432,
-        'OPTIONS': dict(parse_qsl(tmpPostgres.query)),
+_database_url = os.getenv("DATABASE_URL", "")
+if _database_url:
+    tmpPostgres = urlparse(_database_url)
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': tmpPostgres.path.replace('/', '') if isinstance(tmpPostgres.path, str) else tmpPostgres.path.decode().replace('/', ''),
+            'USER': tmpPostgres.username.decode() if isinstance(tmpPostgres.username, bytes) else tmpPostgres.username,
+            'PASSWORD': tmpPostgres.password.decode() if isinstance(tmpPostgres.password, bytes) else tmpPostgres.password,
+            'HOST': tmpPostgres.hostname.decode() if isinstance(tmpPostgres.hostname, bytes) else tmpPostgres.hostname,
+            'PORT': 5432,
+            'OPTIONS': dict(parse_qsl(tmpPostgres.query.decode() if isinstance(tmpPostgres.query, bytes) else tmpPostgres.query)),
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
