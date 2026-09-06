@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Project(models.Model):
+    CATEGORY_AI = "ai"
     CATEGORY_FULLSTACK = "fullstack"
     CATEGORY_AI = "ai"
     CATEGORY_WRITING = "writing"
@@ -9,6 +10,8 @@ class Project(models.Model):
         (CATEGORY_FULLSTACK, "Full-Stack"),
         (CATEGORY_AI, "AI"),
         (CATEGORY_WRITING, "Writing"),
+        (CATEGORY_AI, "AI Engineering"),
+        (CATEGORY_FULLSTACK, "Full-Stack Web"),
     ]
 
     slug = models.SlugField(unique=True)
@@ -42,6 +45,7 @@ class SiteMeta(models.Model):
     """Singleton row for global site configuration."""
     name = models.CharField(max_length=80, default="Meshack Mbithi")
     headline = models.CharField(max_length=200, default="Full-Stack Engineer · AI Quality Specialist")
+    headline = models.CharField(max_length=200, default="AI Engineer · Full-Stack Developer")
     location = models.CharField(max_length=80, default="Nairobi, KE · GMT+3")
     status = models.CharField(max_length=200, default="Open to contract & full-time remote roles")
     email = models.EmailField(default="meshackmbithi01@gmail.com")
