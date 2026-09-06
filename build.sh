@@ -7,5 +7,10 @@ python manage.py migrate --settings=config.settings
 echo "Loading initial data..."
 python manage.py loaddata --settings=config.settings --ignorenonexistent portfolio/fixtures/initial_data.json || true
 
-echo "Static files collected:"
-ls -la staticfiles/
+echo "Copying static files to public/static..."
+if [ -d "staticfiles" ]; then
+  mkdir -p public/static
+  cp -r staticfiles/* public/static/
+  echo "Static files copied:"
+  ls -la public/static/
+fi
