@@ -8,6 +8,8 @@ echo "Loading initial data..."
 python manage.py loaddata --settings=config.settings --ignorenonexistent portfolio/fixtures/initial_data.json || true
 
 if [ -d "staticfiles" ]; then
-  mkdir -p public
-  cp -r staticfiles public/static
+  mkdir -p public/static
+  cp -r staticfiles/* public/static/
+  echo "Static files copied to public/static/"
+  ls -la public/static/
 fi
